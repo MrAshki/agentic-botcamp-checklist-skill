@@ -20,6 +20,12 @@ python scripts/smoke_install.py --source https://github.com/MrAshki/agentic-botc
 
 The source checkout must match the published revision, since file hashes are compared. Network access to npm and GitHub is required. The third-party installer's optional telemetry is disabled for these tests.
 
+## Observed result on 2026-10-16
+
+The isolated Linux installation, full-file comparison, list, reinstall and removal checks passed for all three targets. See [machine-readable result](install-local-linux.json).
+
+Remote installation and GitHub-hosted workflow results have not been verified: publication was blocked by GitHub write access. Those checks should run after the repository is populated. No authenticated live model session in the three provider CLIs was tested.
+
 ## Limits
 
 Filesystem installation and CLI discovery are tested. A live model session in the destination Codex, Gemini CLI or Claude Code application is a separate check, requiring that tool to be installed and authenticated. These tests do not make paid model calls or claim that every version of those tools behaves identically.
