@@ -1,0 +1,4 @@
+interface:
+  display_name: "مسیریاب پروژه‌های AI"
+  short_description: "پیداکردن مسیر و ساخت چک‌لیست متناسب با پروژه"
+  default_prompt: "با $ai-project-navigator برای هدف و محدودیت‌هایم مسیر مناسب و چک‌لیست اختصاصی بساز."
