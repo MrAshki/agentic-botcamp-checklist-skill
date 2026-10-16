@@ -19,6 +19,8 @@ for path in skill.rglob('*.md'):
 assert len(ids) == len(set(ids)) == 159, 'Checklist count or IDs changed'
 assert 'رضا شکرزاد' in (skill / 'references/provenance.md').read_text(encoding='utf-8')
 assert len(manifest.splitlines()) < 500, 'Skill too long'
+assert 'در پاسخ عادی آن‌ها را چاپ نکن' in manifest, 'User-facing source rule is missing'
+assert (skill / 'references/course-topic-map.md').is_file(), 'Course topic map is missing'
 package_text = '\n'.join(
     path.read_text(encoding='utf-8', errors='replace')
     for path in root.rglob('*')
