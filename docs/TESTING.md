@@ -11,6 +11,7 @@
 3. Verify that the CLI lists the skill for the selected target.
 4. Reinstall and check the manifest again.
 5. Remove this skill from the isolated project and verify removal.
+6. Keep a different sentinel skill unchanged through install, reinstall and removal.
 
 The test does not use global scope or change the tester's home directory. To repeat using the published repository rather than local files:
 
@@ -20,9 +21,15 @@ python scripts/smoke_install.py --source https://github.com/MrAshki/agentic-botc
 
 The source checkout must match the published revision, since file hashes are compared. Network access to npm and GitHub is required. The third-party installer's optional telemetry is disabled for these tests.
 
-## Observed result on 2026-10-16
+## Previous observed result on 2026-10-16
 
-The isolated Linux installation, full-file comparison, list, reinstall and removal checks passed for all three targets. See [machine-readable result](install-local-linux.json).
+The isolated Linux installation, full-file comparison, list, reinstall and removal checks passed for all three targets. See [machine-readable result](install-local-linux.json). That saved result predates the unrelated-skill preservation check added later, so it does not prove that new check passed.
+
+## Current local result on 2026-10-16
+
+The isolated Windows test passed for Codex, Gemini CLI and Claude Code with the local repository as source. It verified all 15 installed skill files, listing, reinstall, removal and preservation of a different sentinel skill. See [machine-readable result](install-local-windows.json).
+
+This result does not prove installation from GitHub. Run the documented remote-source command after a successful push and record that result separately.
 
 Remote installation and GitHub-hosted workflow results have not been verified: publication was blocked by GitHub write access. Those checks should run after the repository is populated. No authenticated live model session in the three provider CLIs was tested.
 
@@ -40,12 +47,21 @@ The pinned installer's `remove ... --agent gemini-cli` reported success but left
 
 ## Skill behavior scenarios
 
-The navigator was independently exercised on three prompts before publishing:
+Three prompts were independently exercised before the first publication:
 
 - Tabular customer-churn prediction, 2,000 labeled rows, no GPU or budget, ten days to a class demo: short CPU path and a tailored checklist; no code generated.
 - Vague request for AI in a shop: three focused questions and a provisional path; no premature fixed architecture.
 - Comparison of four pretrained Persian speech models on 20 files from two speakers: evaluation and privacy checklist without requiring training.
 
 A constraint interpretation issue in the third response was corrected in the instructions: keeping audio private must not silently turn into an offline-only dashboard requirement. Deadline feasibility must not be guaranteed. These instruction fixes passed structural validation; no new behavioral run of those two specific sentences is claimed.
+
+The four release scenarios are also reviewed textually against `SKILL.md`, `selection-rules.md`, `interpretation.md` and the output contract:
+
+- Labeled tabular ML, no GPU and low budget routes to a simple CPU baseline, not deep learning or an agent.
+- A vague idea requires at most three route-changing questions before a final checklist.
+- Pretrained speech-model comparison routes to a fixed evaluation set and does not require training.
+- RAG with private source data and a public demo separates private source handling from publishable outputs; privacy alone does not force an offline demo.
+
+Textual review is not an independent live-model run. Record a new live run separately, with its raw prompt and output, before claiming behavioral execution for these four scenarios.
 
 These scenario checks demonstrate limited observed behavior, not measured effectiveness across a classroom. For future evaluations, preserve the raw input and output, record unnecessary questions and irrelevant checklist items, and revise routing rules from observed failures.

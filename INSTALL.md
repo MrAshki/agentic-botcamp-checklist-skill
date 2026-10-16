@@ -47,7 +47,7 @@ The two `--yes` flags approve downloading the pinned installer and the selected 
 
 Run `npx --yes skills@1.7.2 ls --global --agent TARGET` with TARGET replaced by the selected agent ID. Verify that `ai-project-navigator` appears and check its installed SKILL.md and references directory. Do not infer success from process start or a downloaded repository alone.
 
-For Codex and Claude Code, recommend a new session to ensure discovery. Gemini CLI can use `/skills reload` followed by `/skills list`. Report installation path and whether runtime discovery was actually checked. If the tool process is unavailable, say file installation was verified but activation requires opening the destination tool.
+For Codex, start a new session to ensure discovery. Gemini CLI can use `/skills reload` followed by `/skills list`. Claude Code normally detects changes in an existing skills directory; if the top-level directory was created after the session started, use `/reload-skills`. Report the installation path and whether runtime discovery was actually checked. If the tool process is unavailable, say file installation was verified but activation was not checked.
 
 Try a short real request only if desired; installation does not require an API call.
 
@@ -61,13 +61,13 @@ If Node.js is unavailable, prefer copying files using the agent's existing files
 
 Resolve the actual user's home using the host environment, do not hardcode `/root` or another person's username. On Windows use native path handling; WSL and native Windows are separate installations. Do not change system HOME or install runtimes automatically. An existing target requires preserving local edits before replacement. Use a staging directory and verify the copied references before reporting success.
 
-Gemini CLI also has a native Git installer:
+Gemini CLI also has a native Git installer. The current official command accepts a repository URL. For this multi-skill repository, use the shared installer above because it selects only `ai-project-navigator`; do not assume that an undocumented subdirectory flag exists.
 
 ```sh
-gemini skills install https://github.com/MrAshki/agentic-botcamp-checklist-skill.git --path skills/ai-project-navigator --scope user
+gemini skills install https://github.com/MrAshki/agentic-botcamp-checklist-skill.git
 ```
 
-Keep its native confirmation prompt; this command is an alternative, not a second installation to run after the shared installer. Do not create duplicate copies in the shared and tool-specific directories.
+Use the native command only after checking that the installed Gemini CLI can select the nested skill from this repository. Keep its confirmation prompt. This command is an alternative, not a second installation to run after the shared installer. Do not create duplicate copies in the shared and tool-specific directories.
 
 ## Usage
 

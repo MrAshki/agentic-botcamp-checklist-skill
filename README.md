@@ -56,7 +56,7 @@ npx --yes skills@1.7.2 add MrAshki/agentic-botcamp-checklist-skill --skill ai-pr
 npx --yes skills@1.7.2 add MrAshki/agentic-botcamp-checklist-skill --skill ai-project-navigator --agent claude-code --global --copy --yes
 ```
 
-پس از نصب، جلسهٔ تازه باز کنید. در Gemini CLI می‌توانید `/skills reload` و سپس `/skills list` را اجرا کنید. نصب در سطح کاربر است و به پروژهٔ جاری محدود نمی‌شود. نصب در WSL و نصب در ویندوز دو محیط جدا هستند.
+برای Codex پس از نصب، جلسهٔ تازه باز کنید. در Gemini CLI، `/skills reload` و سپس `/skills list` را اجرا کنید. Claude Code معمولاً تغییر پوشهٔ موجود را در همان جلسه می‌بیند؛ اگر پوشهٔ اصلی اسکیل‌ها تازه ساخته شده است، `/reload-skills` را اجرا کنید. نصب در سطح کاربر است و به پروژهٔ جاری محدود نمی‌شود. نصب در WSL و نصب در ویندوز دو محیط جدا هستند.
 
 > این سه نام، ابزارهای مقصد هستند؛ عوض‌کردن مدل API به‌تنهایی محل نصب اسکیل را تغییر نمی‌دهد.
 
@@ -176,7 +176,7 @@ python scripts/validate.py
 python scripts/smoke_install.py
 ```
 
-آزمون نصب، نسخهٔ واقعی `skills@1.7.2` را در پوشه‌های موقت اجرا می‌کند: نصب برای هر سه ابزار، تطبیق تمام فایل‌ها، مشاهده در فهرست، نصب مجدد و حذف. به پوشهٔ اسکیل‌های حساب شخصی دست نمی‌زند. برای نتایج و محدودیت‌ها [گزارش آزمون](docs/TESTING.md) را بخوانید.
+آزمون نصب، نسخهٔ واقعی `skills@1.7.2` را در پوشه‌های موقت اجرا می‌کند: نصب برای هر سه ابزار، تطبیق تمام فایل‌ها، مشاهده در فهرست، نصب مجدد، حذف و حفظ یک اسکیل نامرتبط. به پوشهٔ اسکیل‌های حساب شخصی دست نمی‌زند. برای نتایج و محدودیت‌ها [گزارش آزمون](docs/TESTING.md) را بخوانید.
 
 برای پیشنهاد بهبود، یک Issue با توضیح پروژه، شرایط ورودی، پاسخ دریافتی و بخشی که مفید نبوده ثبت کنید. نمونه را از اطلاعات شخصی پاک کنید. هدف، بندهای دقیق‌تر و سؤال‌های کمتر است؛ افزودن بند صرفاً برای طولانی‌ترشدن چک‌لیست مفید نیست.
 
@@ -191,6 +191,6 @@ python scripts/smoke_install.py
 بررسی‌شده در ۱۶ اکتبر ۲۰۲۶:
 
 - [Codex — محل بارگذاری اسکیل‌ها](https://learn.chatgpt.com/docs/build-skills)
-- [Gemini CLI — Agent Skills](https://geminicli.com/docs/cli/skills/)
+- [Gemini CLI — مدیریت Agent Skills](https://geminicli.com/docs/cli/using-agent-skills/)
 - [Claude Code — Skills](https://code.claude.com/docs/en/skills)
 - [نصب‌کنندهٔ مشترک skills](https://github.com/vercel-labs/skills)

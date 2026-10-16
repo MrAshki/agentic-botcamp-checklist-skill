@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-16",
+  "platform": "Windows",
+  "installer": "skills@1.7.2",
+  "scope": "isolated project",
+  "source": "local",
+  "results": [
+    {
+      "agent": "codex",
+      "install": "pass",
+      "files": 15,
+      "list": "pass",
+      "reinstall": "pass",
+      "remove": "pass",
+      "unrelated_skill": "preserved"
+    },
+    {
+      "agent": "gemini-cli",
+      "install": "pass",
+      "files": 15,
+      "list": "pass",
+      "reinstall": "pass",
+      "remove": "pass",
+      "unrelated_skill": "preserved"
+    },
+    {
+      "agent": "claude-code",
+      "install": "pass",
+      "files": 15,
+      "list": "pass",
+      "reinstall": "pass",
+      "remove": "pass",
+      "unrelated_skill": "preserved"
+    }
+  ]
+}
