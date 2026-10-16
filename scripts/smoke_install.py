@@ -13,6 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 NAME = 'ai-project-navigator'
 VERSION = '1.7.2'
 SENTINEL = 'unrelated-skill'
+TEXT_SUFFIXES = {'.md', '.yaml', '.yml', '.json', '.txt'}
+
+
+def digest(path):
+    data = path.read_bytes()
+    if path.suffix.lower() in TEXT_SUFFIXES:
+        data = data.replace(b'\r\n', b'\n')
+    return hashlib.sha256(data).hexdigest()
 
 
 def run(args, cwd):
@@ -33,7 +41,7 @@ def main():
     if not npx:
         raise SystemExit('Install Node.js LTS (with npm/npx) and Git first.')
     source = ROOT / 'skills' / NAME
-    expected = {p.relative_to(source): hashlib.sha256(p.read_bytes()).hexdigest()
+    expected = {p.relative_to(source): digest(p)
                 for p in source.rglob('*') if p.is_file()}
     base = [npx, '--yes', f'skills@{VERSION}']
     results = []
@@ -47,11 +55,11 @@ def main():
             sentinel.write_text(
                 '---\nname: unrelated-skill\ndescription: Installation-test sentinel.\n---\n',
                 encoding='utf-8')
-            sentinel_hash = hashlib.sha256(sentinel.read_bytes()).hexdigest()
+            sentinel_hash = digest(sentinel)
             cmd = base + ['add', args.source, '--skill', NAME, '--agent', agent, '--copy', '--yes']
             run(cmd, tmp)
             target = Path(tmp) / folder / 'skills' / NAME
-            actual = {p.relative_to(target): hashlib.sha256(p.read_bytes()).hexdigest()
+            actual = {p.relative_to(target): digest(p)
                       for p in target.rglob('*') if p.is_file()}
             if actual != expected:
                 raise RuntimeError(f'{agent}: installed files differ from source')
@@ -60,14 +68,14 @@ def main():
                 raise RuntimeError(f'{agent}: skill missing from list')
             # Reinstall verifies the documented update path without touching user files.
             run(cmd, tmp)
-            if (target / 'SKILL.md').read_bytes() != (source / 'SKILL.md').read_bytes():
+            if digest(target / 'SKILL.md') != digest(source / 'SKILL.md'):
                 raise RuntimeError(f'{agent}: reinstall mismatch')
-            if not sentinel.is_file() or hashlib.sha256(sentinel.read_bytes()).hexdigest() != sentinel_hash:
+            if not sentinel.is_file() or digest(sentinel) != sentinel_hash:
                 raise RuntimeError(f'{agent}: install or reinstall changed an unrelated skill')
             run(base + ['remove', NAME, '--yes'], tmp)
             if (target / 'SKILL.md').exists():
                 raise RuntimeError(f'{agent}: uninstall did not remove skill')
-            if not sentinel.is_file() or hashlib.sha256(sentinel.read_bytes()).hexdigest() != sentinel_hash:
+            if not sentinel.is_file() or digest(sentinel) != sentinel_hash:
                 raise RuntimeError(f'{agent}: uninstall changed an unrelated skill')
             results.append({'agent': agent, 'install': 'pass', 'files': len(actual),
                             'list': 'pass', 'reinstall': 'pass', 'remove': 'pass',

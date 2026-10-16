@@ -7,7 +7,7 @@
 `python scripts/smoke_install.py` runs the actual pinned `skills@1.7.2` CLI in a new temporary project for each target:
 
 1. Install only `ai-project-navigator` with `--copy` for `codex`, `gemini-cli` or `claude-code`.
-2. Compare the SHA-256 of every installed file with the source checkout.
+2. Compare the SHA-256 of every installed file with the source checkout. Normalize CRLF to LF for text files so the test is portable across Git checkouts; compare other files byte for byte.
 3. Verify that the CLI lists the skill for the selected target.
 4. Reinstall and check the manifest again.
 5. Remove this skill from the isolated project and verify removal.
@@ -29,9 +29,11 @@ The isolated Linux installation, full-file comparison, list, reinstall and remov
 
 The isolated Windows test passed for Codex, Gemini CLI and Claude Code with the local repository as source. It verified all 15 installed skill files, listing, reinstall, removal and preservation of a different sentinel skill. See [machine-readable result](install-local-windows.json).
 
-This result does not prove installation from GitHub. Run the documented remote-source command after a successful push and record that result separately.
+The same test then passed with the published GitHub repository as source. See [remote machine-readable result](install-github-windows.json).
 
-Remote installation and GitHub-hosted workflow results have not been verified: publication was blocked by GitHub write access. Those checks should run after the repository is populated. No authenticated live model session in the three provider CLIs was tested.
+GitHub-hosted workflow results were not checked in this local run. No authenticated live model session in Gemini CLI or Claude Code was tested.
+
+After the GitHub installation, an ephemeral fresh Codex session loaded the installed `SKILL.md` from the user skills directory and answered the Persian news-classification test prompt. It returned a four-stage CPU-oriented path, eight completion-marked start items, and explicitly deferred RAG, agents, large-model fine-tuning and production infrastructure. This is one live Codex behavior check, not a test of the other three release scenarios or the other provider CLIs.
 
 ## Limits
 
