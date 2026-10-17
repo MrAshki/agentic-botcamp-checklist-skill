@@ -21,6 +21,11 @@ assert 'رضا شکرزاد' in (skill / 'references/provenance.md').read_text(e
 assert len(manifest.splitlines()) < 500, 'Skill too long'
 assert 'در پاسخ عادی آن‌ها را چاپ نکن' in manifest, 'User-facing source rule is missing'
 assert (skill / 'references/course-topic-map.md').is_file(), 'Course topic map is missing'
+assert 'حداکثر ۱۰ سؤال' in manifest, 'Question cap is missing'
+for session_number in range(6):
+    assert (skill / f'references/course-session-{session_number:02d}.md').is_file(), (
+        f'Course session reference {session_number:02d} is missing'
+    )
 package_text = '\n'.join(
     path.read_text(encoding='utf-8', errors='replace')
     for path in root.rglob('*')

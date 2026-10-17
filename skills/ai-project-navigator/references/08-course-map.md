@@ -2,32 +2,32 @@
 
 ## چک‌لیست ۸: کل دوره در یک نگاه و آنچه نباید جا بیفتد
 
-### ۱. جلسه ۰: نقشه AI
+### ۱. جلسهٔ صفر — از تورینگ تا Agent
 - [ ] C8-01 | تاریخچه، Scaling، Transformer و ChatGPT
 - [ ] C8-02 | نقشه توانایی‌ها، ریسک‌ها و قوانین
 - [ ] C8-03 | ایران، تحریم و مسیر شغلی
 
-### ۲. جلسه ۱: داده
+### ۲. جلسهٔ ۱ — داده، سوخت هر AI Agent
 - [ ] C8-04 | انواع داده و قالب‌ها (JSON، Parquet)
 - [ ] C8-05 | EDA، Missing، Outlier، Encoding، Scaling
 - [ ] C8-06 | Split و Leakage؛ داشبورد BI
 
-### ۳. جلسه ۲: ML و یادگیری عمیق
+### ۳. جلسهٔ ۲ — یادگیری ماشین، از کل به جزء
 - [ ] C8-07 | مدل‌های کلاسیک، Ensemble، خوشه‌بندی
 - [ ] C8-08 | Transformer، RNN، CNN، معیارها
 - [ ] C8-09 | Fine-tune ParsBERT، RL و RLHF
 
-### ۴. جلسه ۳: API تا RAG
+### ۴. جلسهٔ ۳ — از API تا RAG
 - [ ] C8-10 | LLM، محدودیت‌ها، Prompt و Context
 - [ ] C8-11 | Vector DB، Embedding، RAG
 - [ ] C8-12 | SPEC، OAuth، Backend، Frontend و پرامپت
 
-### ۵. جلسه ۴: Agent
+### ۵. جلسهٔ ۴ — Agentic AI در عمل
 - [ ] C8-13 | Workflow یا Agent؛ ابزار و MCP
 - [ ] C8-14 | حافظه، الگوها، چند-Agent، خودمختاری
 - [ ] C8-15 | Tracing، Eval، OWASP؛ دستیار شخصی
 
-### ۶. جلسه ۵: مدل باز
+### ۶. جلسهٔ ۵ — مدل‌های متن‌باز و LLM محلی
 - [ ] C8-16 | مجوز، Dense، MoE، Quantization و GGUF
 - [ ] C8-17 | سخت‌افزار؛ MLX، vLLM، Ollama، llama.cpp
 - [ ] C8-18 | Harness، RLHF، Fine-tune؛ دموی مالی

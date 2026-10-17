@@ -25,9 +25,9 @@ The source checkout must match the published revision, since file hashes are com
 
 The isolated Linux installation, full-file comparison, list, reinstall and removal checks passed for all three targets. See [machine-readable result](install-local-linux.json). That saved result predates the unrelated-skill preservation check added later, so it does not prove that new check passed.
 
-## Current local result on 2026-10-16
+## Current local result on 2026-10-17
 
-The isolated Windows test passed for Codex, Gemini CLI and Claude Code with the local repository as source. It verified all 15 installed skill files, listing, reinstall, removal and preservation of a different sentinel skill. See [machine-readable result](install-local-windows.json).
+The isolated Windows test passed for Codex, Gemini CLI and Claude Code with the local repository as source. It verified all 22 installed skill files, listing, reinstall, removal and preservation of a different sentinel skill. See [machine-readable result](install-local-windows.json).
 
 The same test then passed with the published GitHub repository as source. See [remote machine-readable result](install-github-windows.json).
 
@@ -60,7 +60,7 @@ A constraint interpretation issue in the third response was corrected in the ins
 The four release scenarios are also reviewed textually against `SKILL.md`, `selection-rules.md`, `interpretation.md` and the output contract:
 
 - Labeled tabular ML, no GPU and low budget routes to a simple CPU baseline, not deep learning or an agent.
-- A vague idea requires at most three route-changing questions before a final checklist.
+- A vague idea permits at most ten route-changing questions in one turn, while requiring the smallest useful set before a final checklist.
 - Pretrained speech-model comparison routes to a fixed evaluation set and does not require training.
 - RAG with private source data and a public demo separates private source handling from publishable outputs; privacy alone does not force an offline demo.
 

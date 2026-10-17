@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "platform": "Windows",
   "installer": "skills@1.7.2",
   "scope": "isolated project",
@@ -8,7 +8,7 @@
     {
       "agent": "codex",
       "install": "pass",
-      "files": 15,
+      "files": 22,
       "list": "pass",
       "reinstall": "pass",
       "remove": "pass",
@@ -17,7 +17,7 @@
     {
       "agent": "gemini-cli",
       "install": "pass",
-      "files": 15,
+      "files": 22,
       "list": "pass",
       "reinstall": "pass",
       "remove": "pass",
@@ -26,7 +26,7 @@
     {
       "agent": "claude-code",
       "install": "pass",
-      "files": 15,
+      "files": 22,
       "list": "pass",
       "reinstall": "pass",
       "remove": "pass",
